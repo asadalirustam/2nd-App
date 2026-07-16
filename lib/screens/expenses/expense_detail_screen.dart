@@ -120,10 +120,10 @@ class ExpenseDetailScreen extends StatelessWidget {
               width: double.infinity,
               padding: const EdgeInsets.symmetric(vertical: 32, horizontal: 20),
               decoration: BoxDecoration(
-                color: theme.colorScheme.primary.withOpacity(0.04),
+                color: theme.colorScheme.primary.withValues(alpha: 0.04),
                 borderRadius: BorderRadius.circular(24),
                 border: Border.all(
-                  color: theme.colorScheme.primary.withOpacity(0.1),
+                  color: theme.colorScheme.primary.withValues(alpha: 0.1),
                 ),
               ),
               child: Column(
@@ -212,13 +212,13 @@ class ExpenseDetailScreen extends StatelessWidget {
                   placeholder: (context, url) => Container(
                     height: 200,
                     width: double.infinity,
-                    color: Colors.grey.withOpacity(0.1),
+                    color: Colors.grey.withValues(alpha: 0.1),
                     child: const Center(child: CircularProgressIndicator()),
                   ),
                   errorWidget: (context, url, error) => Container(
                     height: 120,
                     width: double.infinity,
-                    color: Colors.grey.withOpacity(0.1),
+                    color: Colors.grey.withValues(alpha: 0.1),
                     child: const Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -257,7 +257,7 @@ class _DetailRow extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Icon(icon, color: theme.colorScheme.primary.withOpacity(0.6), size: 22),
+        Icon(icon, color: theme.colorScheme.primary.withValues(alpha: 0.6), size: 22),
         const SizedBox(width: 16),
         Expanded(
           child: Column(
@@ -267,7 +267,7 @@ class _DetailRow extends StatelessWidget {
                 label,
                 style: TextStyle(
                   fontSize: 12,
-                  color: theme.colorScheme.onBackground.withOpacity(0.5),
+                  color: theme.colorScheme.onSurface.withValues(alpha: 0.5),
                 ),
               ),
               const SizedBox(height: 4),

@@ -135,7 +135,7 @@ class _ExpenseListScreenState extends State<ExpenseListScreen> {
                         decoration: BoxDecoration(
                           color: theme.colorScheme.surface,
                           borderRadius: BorderRadius.circular(10),
-                          border: Border.all(color: Colors.grey.withOpacity(0.2)),
+                          border: Border.all(color: Colors.grey.withValues(alpha: 0.2)),
                         ),
                         child: DropdownButtonHideUnderline(
                           child: DropdownButton<String>(
@@ -168,7 +168,7 @@ class _ExpenseListScreenState extends State<ExpenseListScreen> {
                         decoration: BoxDecoration(
                           color: theme.colorScheme.surface,
                           borderRadius: BorderRadius.circular(10),
-                          border: Border.all(color: Colors.grey.withOpacity(0.2)),
+                          border: Border.all(color: Colors.grey.withValues(alpha: 0.2)),
                         ),
                         child: DropdownButtonHideUnderline(
                           child: DropdownButton<String>(
@@ -200,15 +200,15 @@ class _ExpenseListScreenState extends State<ExpenseListScreen> {
                       child: Container(
                         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
                         decoration: BoxDecoration(
-                          color: _startDate != null ? theme.colorScheme.primary.withOpacity(0.1) : theme.colorScheme.surface,
+                          color: _startDate != null ? theme.colorScheme.primary.withValues(alpha: 0.1) : theme.colorScheme.surface,
                           borderRadius: BorderRadius.circular(10),
                           border: Border.all(
-                            color: _startDate != null ? theme.colorScheme.primary : Colors.grey.withOpacity(0.2),
+                            color: _startDate != null ? theme.colorScheme.primary : Colors.grey.withValues(alpha: 0.2),
                           ),
                         ),
                         child: Icon(
                           Icons.calendar_month,
-                          color: _startDate != null ? theme.colorScheme.primary : theme.colorScheme.onBackground.withOpacity(0.6),
+                          color: _startDate != null ? theme.colorScheme.primary : theme.colorScheme.onSurface.withValues(alpha: 0.6),
                         ),
                       ),
                     ),
@@ -258,7 +258,7 @@ class _ExpenseListScreenState extends State<ExpenseListScreen> {
                             Icon(
                               Icons.search_off_rounded,
                               size: 64,
-                              color: theme.colorScheme.onBackground.withOpacity(0.15),
+                              color: theme.colorScheme.onSurface.withValues(alpha: 0.15),
                             ),
                             const SizedBox(height: 16),
                             const Text(
@@ -334,7 +334,7 @@ class _ExpenseListScreenState extends State<ExpenseListScreen> {
                                 margin: const EdgeInsets.only(bottom: 12),
                                 child: ListTile(
                                   leading: CircleAvatar(
-                                    backgroundColor: theme.colorScheme.primary.withOpacity(0.08),
+                                    backgroundColor: theme.colorScheme.primary.withValues(alpha: 0.08),
                                     child: Icon(
                                       _getCategoryIcon(expense.category),
                                       color: theme.colorScheme.primary,

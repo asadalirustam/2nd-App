@@ -242,7 +242,7 @@ class _AddEditExpenseScreenState extends State<AddEditExpenseScreen> {
 
                     // Category Selection
                     DropdownButtonFormField<String>(
-                      value: _selectedCategory,
+                      initialValue: _selectedCategory,
                       decoration: const InputDecoration(
                         labelText: 'Expense Category',
                         prefixIcon: Icon(Icons.category_outlined),
@@ -265,7 +265,7 @@ class _AddEditExpenseScreenState extends State<AddEditExpenseScreen> {
 
                     // Payment Method Selection
                     DropdownButtonFormField<String>(
-                      value: _selectedPaymentMethod,
+                      initialValue: _selectedPaymentMethod,
                       decoration: const InputDecoration(
                         labelText: 'Payment Method',
                         prefixIcon: Icon(Icons.payment_outlined),
@@ -302,7 +302,7 @@ class _AddEditExpenseScreenState extends State<AddEditExpenseScreen> {
                             Row(
                               children: [
                                 Icon(Icons.calendar_today_outlined,
-                                    color: theme.colorScheme.onBackground.withOpacity(0.5)),
+                                    color: theme.colorScheme.onSurface.withValues(alpha: 0.5)),
                                 const SizedBox(width: 12),
                                 Text(
                                   DateFormat('EEEE, MMM dd, yyyy').format(_selectedDate),
@@ -353,7 +353,7 @@ class _AddEditExpenseScreenState extends State<AddEditExpenseScreen> {
                             right: 8,
                             top: 8,
                             child: CircleAvatar(
-                              backgroundColor: Colors.black.withOpacity(0.6),
+                              backgroundColor: Colors.black.withValues(alpha: 0.6),
                               child: IconButton(
                                 icon: const Icon(Icons.close, color: Colors.white),
                                 onPressed: () {
@@ -384,7 +384,7 @@ class _AddEditExpenseScreenState extends State<AddEditExpenseScreen> {
                             right: 8,
                             top: 8,
                             child: CircleAvatar(
-                              backgroundColor: Colors.black.withOpacity(0.6),
+                              backgroundColor: Colors.black.withValues(alpha: 0.6),
                               child: IconButton(
                                 icon: const Icon(Icons.delete_outline, color: Colors.white),
                                 onPressed: () {
