@@ -33,6 +33,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
     });
   }
 
+  void setTab(int index) {
+    setState(() {
+      _currentIndex = index;
+    });
+  }
+
   // Define tabs
   List<Widget> get _tabs => [
         const DashboardHomeView(),
@@ -46,6 +52,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
       context,
       MaterialPageRoute(builder: (_) => const AddEditExpenseScreen()),
     ).then((_) {
+      if (!mounted) return;
       // Refresh dashboard on pop back
       Provider.of<TransactionProvider>(context, listen: false).fetchDashboardMetrics();
     });
@@ -56,6 +63,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
       context,
       MaterialPageRoute(builder: (_) => const AddEditIncomeScreen()),
     ).then((_) {
+      if (!mounted) return;
       // Refresh dashboard on pop back
       Provider.of<TransactionProvider>(context, listen: false).fetchDashboardMetrics();
     });
@@ -150,7 +158,7 @@ class DashboardHomeView extends StatelessWidget {
             children: [
               CircleAvatar(
                 radius: 20,
-                backgroundColor: theme.colorScheme.primary.withOpacity(0.1),
+                backgroundColor: theme.colorScheme.primary.withValues(alpha: 0.1),
                 backgroundImage: user?.profileImage != null && user!.profileImage.isNotEmpty
                     ? NetworkImage('${AppConstants.uploadsUrl}/${user.profileImage}')
                     : null,
@@ -167,7 +175,7 @@ class DashboardHomeView extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 12,
                       fontWeight: FontWeight.normal,
-                      color: theme.colorScheme.onBackground.withOpacity(0.5),
+                      color: theme.colorScheme.onSurface.withValues(alpha: 0.5),
                     ),
                   ),
                   Text(
@@ -209,7 +217,7 @@ class DashboardHomeView extends StatelessWidget {
                         gradient: LinearGradient(
                           colors: [
                             theme.colorScheme.primary,
-                            theme.colorScheme.primary.withOpacity(0.8),
+                            theme.colorScheme.primary.withValues(alpha: 0.8),
                           ],
                           begin: Alignment.topLeft,
                           end: Alignment.bottomRight,
@@ -217,7 +225,7 @@ class DashboardHomeView extends StatelessWidget {
                         borderRadius: BorderRadius.circular(24),
                         boxShadow: [
                           BoxShadow(
-                            color: theme.colorScheme.primary.withOpacity(0.3),
+                            color: theme.colorScheme.primary.withValues(alpha: 0.3),
                             blurRadius: 15,
                             offset: const Offset(0, 10),
                           ),
@@ -252,7 +260,7 @@ class DashboardHomeView extends StatelessWidget {
                                   Container(
                                     padding: const EdgeInsets.all(8),
                                     decoration: BoxDecoration(
-                                      color: Colors.white.withOpacity(0.15),
+                                      color: Colors.white.withValues(alpha: 0.15),
                                       shape: BoxShape.circle,
                                     ),
                                     child: const Icon(
@@ -289,7 +297,7 @@ class DashboardHomeView extends StatelessWidget {
                                   Container(
                                     padding: const EdgeInsets.all(8),
                                     decoration: BoxDecoration(
-                                      color: Colors.white.withOpacity(0.15),
+                                      color: Colors.white.withValues(alpha: 0.15),
                                       shape: BoxShape.circle,
                                     ),
                                     child: const Icon(
@@ -383,7 +391,7 @@ class DashboardHomeView extends StatelessWidget {
                               decoration: BoxDecoration(
                                 color: theme.cardTheme.color,
                                 border: Border.all(
-                                  color: theme.colorScheme.onBackground.withOpacity(0.05),
+                                  color: theme.colorScheme.onSurface.withValues(alpha: 0.05),
                                 ),
                                 borderRadius: BorderRadius.circular(16),
                               ),
@@ -397,7 +405,7 @@ class DashboardHomeView extends StatelessWidget {
                                     overflow: TextOverflow.ellipsis,
                                     style: TextStyle(
                                       fontSize: 13,
-                                      color: theme.colorScheme.onBackground.withOpacity(0.6),
+                                      color: theme.colorScheme.onSurface.withValues(alpha: 0.6),
                                       fontWeight: FontWeight.w600,
                                     ),
                                   ),
@@ -442,9 +450,7 @@ class DashboardHomeView extends StatelessWidget {
                             onPressed: () {
                               // Direct navigation inside dashboard shell is handled by changing parent index
                               final state = context.findAncestorStateOfType<_DashboardScreenState>();
-                              state?.setState(() {
-                                state._currentIndex = 1;
-                              });
+                              state?.setTab(1);
                             },
                             child: const Text('See All'),
                           ),
@@ -462,13 +468,13 @@ class DashboardHomeView extends StatelessWidget {
                               Icon(
                                 Icons.hourglass_empty_rounded,
                                 size: 48,
-                                color: theme.colorScheme.onBackground.withOpacity(0.2),
+                                color: theme.colorScheme.onSurface.withValues(alpha: 0.2),
                               ),
                               const SizedBox(height: 12),
                               Text(
                                 'No recent transactions',
                                 style: TextStyle(
-                                  color: theme.colorScheme.onBackground.withOpacity(0.4),
+                                  color: theme.colorScheme.onSurface.withValues(alpha: 0.4),
                                 ),
                               ),
                             ],
@@ -490,8 +496,8 @@ class DashboardHomeView extends StatelessWidget {
                             child: ListTile(
                               leading: CircleAvatar(
                                 backgroundColor: isExpense
-                                    ? theme.colorScheme.error.withOpacity(0.1)
-                                    : theme.colorScheme.success.withOpacity(0.1),
+                                    ? theme.colorScheme.error.withValues(alpha: 0.1)
+                                    : theme.colorScheme.success.withValues(alpha: 0.1),
                                 child: Icon(
                                   isExpense ? Icons.arrow_upward_rounded : Icons.arrow_downward_rounded,
                                   color: isExpense ? theme.colorScheme.error : theme.colorScheme.success,
@@ -578,7 +584,7 @@ class _OverviewMiniCard extends StatelessWidget {
         color: theme.cardTheme.color,
         borderRadius: BorderRadius.circular(18),
         border: Border.all(
-          color: theme.colorScheme.onBackground.withOpacity(0.04),
+          color: theme.colorScheme.onSurface.withValues(alpha: 0.04),
         ),
       ),
       child: Column(
@@ -592,7 +598,7 @@ class _OverviewMiniCard extends StatelessWidget {
                 title,
                 style: TextStyle(
                   fontSize: 12,
-                  color: theme.colorScheme.onBackground.withOpacity(0.5),
+                  color: theme.colorScheme.onSurface.withValues(alpha: 0.5),
                   fontWeight: FontWeight.w500,
                 ),
               ),
@@ -625,10 +631,10 @@ class _SavingsCard extends StatelessWidget {
       width: double.infinity,
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: theme.colorScheme.primary.withOpacity(0.05),
+        color: theme.colorScheme.primary.withValues(alpha: 0.05),
         borderRadius: BorderRadius.circular(16),
         border: Border.all(
-          color: theme.colorScheme.primary.withOpacity(0.1),
+          color: theme.colorScheme.primary.withValues(alpha: 0.1),
         ),
       ),
       child: Row(
@@ -646,7 +652,7 @@ class _SavingsCard extends StatelessWidget {
                 'This Month\'s Savings',
                 style: TextStyle(
                   fontSize: 11,
-                  color: theme.colorScheme.onBackground.withOpacity(0.6),
+                  color: theme.colorScheme.onSurface.withValues(alpha: 0.6),
                 ),
               ),
               const SizedBox(height: 2),

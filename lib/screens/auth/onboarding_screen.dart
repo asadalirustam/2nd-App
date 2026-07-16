@@ -85,7 +85,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         Container(
                           padding: const EdgeInsets.all(32),
                           decoration: BoxDecoration(
-                            color: theme.colorScheme.primary.withOpacity(0.08),
+                            color: theme.colorScheme.primary.withValues(alpha: 0.08),
                             shape: BoxShape.circle,
                           ),
                           child: Icon(
@@ -109,7 +109,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontSize: 16,
-                            color: theme.colorScheme.onBackground.withOpacity(0.6),
+                            color: theme.colorScheme.onSurface.withValues(alpha: 0.6),
                             height: 1.5,
                           ),
                         ),
@@ -132,9 +132,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         height: 8,
                         width: _currentPage == index ? 24 : 8,
                         decoration: BoxDecoration(
-                          color: _currentPage == index
-                              ? theme.colorScheme.primary
-                              : theme.colorScheme.primary.withOpacity(0.2),
+                              color: _currentPage == index
+                                  ? theme.colorScheme.primary
+                                  : theme.colorScheme.primary.withValues(alpha: 0.2),
                           borderRadius: BorderRadius.circular(4),
                         ),
                       ),
