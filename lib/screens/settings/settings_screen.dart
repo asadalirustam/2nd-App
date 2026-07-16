@@ -129,7 +129,7 @@ class SettingsScreen extends StatelessWidget {
           Center(
             child: Text(
               'Expense Tracker Pro • v1.0.0',
-              style: TextStyle(fontSize: 11, color: theme.colorScheme.onBackground.withOpacity(0.4)),
+              style: TextStyle(fontSize: 11, color: theme.colorScheme.onSurface.withValues(alpha: 0.4)),
             ),
           ),
         ],

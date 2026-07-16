@@ -61,7 +61,7 @@ class _ReportsScreenState extends State<ReportsScreen> with SingleTickerProvider
           controller: _tabController,
           indicatorColor: theme.colorScheme.primary,
           labelColor: theme.colorScheme.primary,
-          unselectedLabelColor: theme.colorScheme.onBackground.withOpacity(0.5),
+          unselectedLabelColor: theme.colorScheme.onSurface.withValues(alpha: 0.5),
           tabs: const [
             Tab(text: 'Daily'),
             Tab(text: 'Weekly'),
@@ -95,14 +95,14 @@ class _ReportsScreenState extends State<ReportsScreen> with SingleTickerProvider
                     Icon(
                       Icons.pie_chart_outline_rounded,
                       size: 72,
-                      color: theme.colorScheme.onBackground.withOpacity(0.15),
+                      color: theme.colorScheme.onSurface.withValues(alpha: 0.15),
                     ),
                     const SizedBox(height: 16),
                     Text(
                       'No reports data available',
                       style: TextStyle(
                         fontSize: 16,
-                        color: theme.colorScheme.onBackground.withOpacity(0.4),
+                        color: theme.colorScheme.onSurface.withValues(alpha: 0.4),
                       ),
                     ),
                   ],
@@ -319,7 +319,7 @@ class _ReportsScreenState extends State<ReportsScreen> with SingleTickerProvider
                                 Container(
                                   padding: const EdgeInsets.all(8),
                                   decoration: BoxDecoration(
-                                    color: color.withOpacity(0.1),
+                                    color: color.withValues(alpha: 0.1),
                                     shape: BoxShape.circle,
                                   ),
                                   child: Icon(_getCategoryIcon(cat['category']), color: color, size: 18),
@@ -433,9 +433,9 @@ class _StatBox extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
       decoration: BoxDecoration(
-        color: color.withOpacity(0.04),
+        color: color.withValues(alpha: 0.04),
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: color.withOpacity(0.15)),
+        border: Border.all(color: color.withValues(alpha: 0.15)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -445,7 +445,7 @@ class _StatBox extends StatelessWidget {
             style: TextStyle(
               fontSize: 12,
               fontWeight: FontWeight.w500,
-              color: theme.colorScheme.onBackground.withOpacity(0.6),
+              color: theme.colorScheme.onSurface.withValues(alpha: 0.6),
             ),
           ),
           const SizedBox(height: 8),

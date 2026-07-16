@@ -220,7 +220,7 @@ class _AddEditIncomeScreenState extends State<AddEditIncomeScreen> {
                             Row(
                               children: [
                                 Icon(Icons.calendar_today_outlined,
-                                    color: theme.colorScheme.onBackground.withOpacity(0.5)),
+                                    color: theme.colorScheme.onSurface.withValues(alpha: 0.5)),
                                 const SizedBox(width: 12),
                                 Text(
                                   DateFormat('EEEE, MMM dd, yyyy').format(_selectedDate),

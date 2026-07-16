@@ -254,7 +254,7 @@ class ProfileScreen extends StatelessWidget {
                 children: [
                   CircleAvatar(
                     radius: 56,
-                    backgroundColor: theme.colorScheme.primary.withOpacity(0.08),
+                    backgroundColor: theme.colorScheme.primary.withValues(alpha: 0.08),
                     backgroundImage: user?.profileImage != null && user!.profileImage.isNotEmpty
                         ? NetworkImage('${AppConstants.uploadsUrl}/${user.profileImage}')
                         : null,
@@ -287,7 +287,7 @@ class ProfileScreen extends StatelessWidget {
             const SizedBox(height: 6),
             Text(
               user?.email ?? 'user@example.com',
-              style: TextStyle(fontSize: 14, color: theme.colorScheme.onBackground.withOpacity(0.5)),
+              style: TextStyle(fontSize: 14, color: theme.colorScheme.onSurface.withValues(alpha: 0.5)),
             ),
             const SizedBox(height: 36),
 
