@@ -7,22 +7,22 @@ class AppConstants {
   // Base API URL
   static String get baseUrl {
     if (kIsWeb) {
-      return 'http://localhost:5000/api';
+      return 'http://localhost:5001/api';
     } else if (Platform.isAndroid) {
-      return 'http://10.0.2.2:5000/api'; // Android Emulator
+      return 'http://10.0.2.2:5001/api'; // Android Emulator
     } else {
-      return 'http://localhost:5000/api'; // iOS / Desktop / Others
+      return 'http://localhost:5001/api'; // iOS / Desktop / Others
     }
   }
 
   // Base uploads url
   static String get uploadsUrl {
     if (kIsWeb) {
-      return 'http://localhost:5000';
+      return 'http://localhost:5001';
     } else if (Platform.isAndroid) {
-      return 'http://10.0.2.2:5000';
+      return 'http://10.0.2.2:5001';
     } else {
-      return 'http://localhost:5000';
+      return 'http://localhost:5001';
     }
   }
 
