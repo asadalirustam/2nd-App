@@ -9,7 +9,7 @@ class AppConstants {
     if (kIsWeb) {
       return 'http://localhost:5001/api';
     } else if (Platform.isAndroid) {
-      return 'http://10.0.2.2:5001/api'; // Android Emulator
+      return 'http://127.0.0.1:5001/api'; // Android (Using adb reverse)
     } else {
       return 'http://localhost:5001/api'; // iOS / Desktop / Others
     }
@@ -20,7 +20,7 @@ class AppConstants {
     if (kIsWeb) {
       return 'http://localhost:5001';
     } else if (Platform.isAndroid) {
-      return 'http://10.0.2.2:5001';
+      return 'http://127.0.0.1:5001';
     } else {
       return 'http://localhost:5001';
     }
